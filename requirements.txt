@@ -1,0 +1,11 @@
+beautifulsoup4==4.13.3
+langchain==0.3.19
+langchain_huggingface==0.1.2
+langchain_openai==0.3.6
+numpy==2.2.3
+pandas==2.2.3
+plotly==5.24.1
+Requests==2.32.3
+streamlit==1.39.0
+tensorflow==2.17.0
+yfinance==0.2.54
