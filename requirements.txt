@@ -1,11 +1,27 @@
-beautifulsoup4==4.13.3
-langchain==0.3.19
-langchain_huggingface==0.1.2
-langchain_openai==0.3.6
-numpy==2.2.3
-pandas==2.2.3
-plotly==5.24.1
-Requests==2.32.3
-streamlit==1.39.0
-tensorflow==2.17.0
-yfinance==0.2.54
+# Runtime dependencies (tested with Python 3.12 / conda env "myenv").
+# Install:  pip install -r requirements.txt && pip install -e .
+numpy>=1.26
+pandas>=2.1
+scipy>=1.11
+scikit-learn>=1.4
+statsmodels>=0.14
+lightgbm>=4.0
+xgboost>=2.0
+torch>=2.2
+arch>=7.0
+yfinance>=0.2.54
+requests>=2.31
+pydantic>=2.5
+pyyaml>=6.0
+python-dotenv>=1.0
+joblib>=1.3
+plotly>=5.20
+matplotlib>=3.8
+seaborn>=0.13
+streamlit>=1.50
+shap>=0.45
+# Optional LLM-powered market insights (the app works without them)
+langchain>=0.3
+langchain-huggingface>=0.1
+langchain-openai>=0.2
+beautifulsoup4>=4.12

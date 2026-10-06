@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    image: tesla-forecast
+    ports: ["8501:8501"]
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./artifacts:/app/artifacts      # trained pipeline persists between runs
+      - ./data/processed:/app/data/processed
+    # First run: docker compose run --rm app tesla-forecast train

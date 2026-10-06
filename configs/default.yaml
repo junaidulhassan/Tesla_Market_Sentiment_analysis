@@ -1,0 +1,56 @@
+# Central configuration. Override with:  tesla-forecast --config my.yaml  (deep-merged).
+data:
+  ticker: TSLA
+  start: "2015-01-01"
+  context_tickers: ["SPY", "QQQ", "^VIX"]   # market context features (optional, fails soft)
+  use_context: true
+  local_csv: data/raw/HistoricalData_tesla.csv   # offline fallback (legacy Nasdaq export)
+  cache_dir: data/processed
+  cache_ttl_hours: 6
+  offline: false                                  # true = never touch the network
+
+horizon: 10            # forecast length in TRADING days (10 = two weeks)
+
+features:
+  warmup: 252
+
+models:
+  enabled: [naive, drift, arima, theta, ridge, lightgbm, xgboost, gru_attention, tcn, transformer]
+  deep:
+    seq_len: 60
+    max_epochs: 60
+    patience: 8
+    batch_size: 128
+    lr: 0.002
+    weight_decay: 0.01
+    dropout: 0.15
+    hidden: 48
+    n_seeds: 2
+    device: auto       # auto | cpu | cuda
+
+backtest:
+  n_test_origins: 756       # ~3 trading years of out-of-sample origins
+  refit_every: 63           # re-train every ~quarter (expanding window)
+  step: 1                   # forecast origin every N trading days
+  min_train: 504
+
+ensemble:
+  window: 252               # trailing realised-error window for weights
+  min_obs: 40
+  power: 2.0                # sharpness of inverse-error weighting
+  shrink_to_equal: 0.15
+
+intervals:
+  levels: [0.80, 0.95]
+  window: 400               # trailing realised residuals used for calibration
+  min_obs: 60
+
+simulation:
+  n_paths: 5000
+  seed: 42
+
+paths:
+  artifacts_dir: artifacts
+  reports_dir: reports
+
+seed: 42

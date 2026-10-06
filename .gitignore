@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+
+# Notebooks / tooling
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Secrets - never commit
+.env
+*.key
+
+# Generated data & model artifacts (re-create with `make train`)
+data/processed/
+artifacts/*
+!artifacts/.gitkeep
+
+# Legacy model weights
+*.h5
+
+# OS / editor
+.DS_Store
+.vscode/
