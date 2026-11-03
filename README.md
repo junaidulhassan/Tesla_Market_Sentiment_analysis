@@ -99,37 +99,6 @@ Forecasting and the app work with **no keys at all**.
 All 31 figures produced by the notebook live in [`reports/figures/`](reports/figures/) (numbered by notebook section; the un-numbered ones are static twins of the
 interactive Plotly charts).
 
-| Market & data | Model evaluation |
-|---|---|
-| ![Technicals](reports/figures/technical_chart.png) | ![Skill heat-maps](reports/figures/12_skill_heatmaps.png) |
-| ![Return distribution](reports/figures/02_return_distribution.png) | ![Cumulative error vs naive](reports/figures/14_cumulative_error_vs_naive.png) |
-| ![Volatility regimes](reports/figures/04_volatility_regimes.png) | ![Ensemble weights](reports/figures/ensemble_weights_t5.png) |
-| ![Feature IC](reports/figures/08_feature_information_coefficient.png) | ![SHAP](reports/figures/20_shap_summary.png) |
-
-## Repository layout
-
-```
-├── src/tesla_forecast/
-│   ├── config.py            typed config (configs/default.yaml)
-│   ├── cli.py               tesla-forecast {data,backtest,train,forecast,figures}
-│   ├── data/                loader (yfinance / cache / CSV), NYSE calendar
-│   ├── features/            indicators.py, engineering.py (causal features + targets)
-│   ├── models/              baselines, statistical, supervised (Ridge/GBM), deep (GRU/TCN/Transformer), volatility, registry
-│   ├── evaluation/          metrics, walk-forward backtest, online ensemble, conformal intervals
-│   ├── forecasting/         pipeline orchestration, Monte-Carlo simulation
-│   ├── sentiment/           news (RSS), finance lexicon, rule-based + LLM insights
-│   └── viz/                 Plotly builders (app), matplotlib report figures, shared palette
-├── app/streamlit_app.py     dashboard
-├── notebooks/               01_tesla_advanced_forecasting.ipynb (executed) · legacy/ (v1 material)
-├── configs/default.yaml     all tunables
-├── tests/                   pytest suite (synthetic data, no network)
-├── data/raw/                bundled 2015–2025 CSV (offline fallback)
-├── reports/                 backtest_metrics.csv, interval_coverage.csv, latest_forecast.csv, figures/
-├── artifacts/               trained pipeline (git-ignored)
-├── docs/                    v1 report (PDF)
-└── Dockerfile · docker-compose.yml · Makefile · pyproject.toml · .github/workflows/ci.yml
-```
-
 ## Limitations
 
 * Point forecasts carry no demonstrated edge over a random walk; do not trade on them.
