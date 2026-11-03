@@ -106,8 +106,3 @@ interactive Plotly charts).
 * Headline sentiment is a transparent keyword score shown for context; it is *not* a model input.
 * yfinance is an unofficial API and can rate-limit; the loader degrades to cache, then to the bundled CSV (ends Feb-2025, flagged as stale in the UI).
 * The Dockerfile has not been built in CI/testing yet. Pickled artifacts (`artifacts/pipeline.joblib`) must only be loaded from sources you trust.
-
-## Security note
-
-The original repository committed a Hugging Face API token (`api_token.py`). It was removed from the working tree and replaced by
-environment-variable configuration, **but it still exists in git history — revoke/rotate that token** in your Hugging Face settings.
